@@ -1,11 +1,10 @@
-name = "MultiStart"
-uuid = "1ff1ad57-5904-4f90-a2d5-bb49106b4faf"
+name = "Dart"
+uuid = "d357f4cc-850e-51a7-94e0-ffb3fdc0365e"
 authors = ["Patrick Kofod Mogensen <patrick.mogensen@gmail.com>"]
 version = "0.1.0"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
-Optim = "429524aa-4258-5aef-a3af-852621145aeb"
 SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
 
 [compat]
@@ -13,6 +12,7 @@ julia = "1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Optim = "429524aa-4258-5aef-a3af-852621145aeb"
 
 [targets]
 test = ["Test"]
