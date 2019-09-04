@@ -36,13 +36,13 @@ function mlsl(obj, L, lower, upper; N, sigma, try_ratio, maxiter, getmin, getmin
         X, fX = reduced_set!(fX, X, partype, sbox, obj, N)
         Xr, fXr = X[1:nbest], fX[1:nbest]
         for (xsearch, fxsearch) in zip(Xr, fXr)
-            # Skip if in a cluster
-            in_cluster(star.X, star.fX, xsearch, fxsearch, rk) && continue
+            # Only start a search if xsearch is not in a cluster
+            if !in_cluster(star, xsearch, fxsearch, rk)
+                lxr = L(obj, lower, upper, xsearch)
 
-            lxr = L(obj, lower, upper, xsearch)
-
-            Xfrom, fXfrom, star = update_arrays!(fXfrom, Xfrom, star,
-             xsearch, fxsearch, getmin(lxr), getminf(lxr))
+                Xfrom, fXfrom, star = update_arrays!(fXfrom, Xfrom, star,
+                 xsearch, fxsearch, getmin(lxr), getminf(lxr))
+         end
         end
     end
     star.X, star.fX, Xfrom, fXfrom
